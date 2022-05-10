@@ -33,5 +33,5 @@ int romanToInt(char * s){
             e += table[i];
         i++;
     }
-    return (e);
+    return(e);
 }
