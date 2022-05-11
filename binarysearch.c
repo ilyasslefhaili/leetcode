@@ -17,15 +17,3 @@ int search(int* nums, int numsSize, int target){
     }
     return (-1);
 }
-
-int main()
-{
-    int i = 0;
-    int a[1];
-    while(i < 1)
-    {
-        scanf("%d", &a[i]);
-        i++;
-    }
-    printf("%d\n",search(a, 1, 3));
-}
