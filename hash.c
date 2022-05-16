@@ -13,7 +13,7 @@ typedef struct hash{
 int hash_function(char *value, int size_h)
 {
     int i;
-    int key;
+    long int key;
 
     i = 0;
     key = 0;
@@ -23,7 +23,6 @@ int hash_function(char *value, int size_h)
         i++;
     }
     key = key % size_h;
-    printf("%d\n",key);
     return (key);
 }
 
@@ -62,4 +61,46 @@ void    ft_insert(char *value, int size_h, t_hash *hash)
     while (temp->next != NULL)
         temp = temp->next;
     temp->next = elmt;
+}
+
+int lengthOfLongestSubstring(char * s){
+    t_hash *hash;
+    int end;
+    int     j;
+    int    c;
+    char str[100];
+    char    e;
+    int i;
+
+    i = 0;
+    c = 0;
+    while (s[i] != '\0')
+    {
+        j = 0;
+        hash = hash_create(strlen(s));
+        while (s[i] != '\0')
+        {
+            e = s[i];
+            printf("l\n");
+            end = hash_function(strdup(&e), strlen(s));
+            if (hash->first[end] == NULL)
+            {
+                ft_insert(strdup(&e), strlen(s), hash);
+                i++;
+                str[j] = s[i];
+                j++;
+            }
+            else
+                break ;
+        }
+        str[j + 1] = '\0';
+        if (strlen(str) > c)
+            c = strlen(str);
+    }
+    return (c);
+}
+
+int main()
+{
+    printf("%d", lengthOfLongestSubstring("abcabcbb"));
 }
